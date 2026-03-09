@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Jogo da Forca</h1>
+    </header>
+    
+    <main>
+    <center><div class="card-static"><h2><pre>{{ ascii_art }}</pre></h2></div></center><br>
+    <h2> Palavra: {{' '.join(palavra_secreta) }}</h1>
+
+    {% if jogo_terminado %}
+        <div>{{ mensagem }}</div><br>
+
+    {% else %}
+    <form action="/jogodaforca.html" method="POST">
+        <input type="text" name="chute">
+        <input type="submit">
+    </form>
+    {% endif %}
+
+    <p>Erros: {{erros}} | Tentativas restantes: {{tentativas_restantes}}</p>
+    <p>Chutes: {{letras_chutadas}}</p><br>
+    
+    <br><a href='/jogodaforca.html?reset=1'><button>Jogar Novamente</button></a>
+    <button type="button">Reset Played Words</button>
+    <a href="db_manager.html"><button>Manage Word Database</button></a><br><br>
+    </main>
+
+    <footer class="footer">
+    <a href="{{ url_for('homepage') }}"><button>Return to Menu</button></a>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedra Papel Tesoura</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">   
+        <h1>Pedra Papel Tesoura</h1>
+    </header>
+
+    <main>
+        <div class="container">
+        <a href="" class="card">
+            <img src="https://thumb.silhouette-ac.com/t/69/69ffced83032519ca680dc3058b9ca26_w.jpeg" class="img-card">1- Pedra</a>
+        
+        <a href="" class="card">
+            <img src="https://thumb.silhouette-ac.com/t/26/2654adfd65b6ca4a8ac25a9f727d2262_w.jpeg" class="img-card">2- Papel</a>
+    
+        <a href="" class="card">
+            <img src="https://thumb.silhouette-ac.com/t/a7/a7c3020b4cfb4fd154c4fcfd62702df2_w.jpeg" class="img-card">3- Tesoura</a>
+    </div><br>
+    
+    <form action="/pedrapapeltesoura.html" method="POST">
+        <input type="text" name="numero_escolhido" required>
+        <input type="submit" value="Enviar">
+    </form>
+
+    {% if escolha_jogador %}
+    <p>Sua escolha: {{escolha_jogador}}</p>
+    <p>Escolha da Máquina: {{escolha_maquina}}</p><br>
+    <h3>Vencedor: {{resultado}}</h3>
+    {% endif %}
+
+    </main>
+
+    <footer class="footer">
+    <a href="{{ url_for('homepage') }}"><button>Return to Menu</button></a>
+    </footer>
+</body>
+
+</html>
